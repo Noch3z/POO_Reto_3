@@ -69,11 +69,55 @@
             super().__init__(method, arg1, arg2)
             self.height = self.width
    ```
-   This code features 4 different methods to initialize a Rectangle, and its child class, Square.
+   This code features 4 different methods to initialize a Rectangle, and its child class, Square. The class Line 
    
 2. Restourant
    ```
+   class MenuItem:
+    def __init__(self, name:str, price:float):
+        self.name = name
+        self.price = price
+    def get_name(self):
+        return self.name
+    def get_price(self):
+        return self.price
+    
+   class Beverage(MenuItem):
+       def __init__(self, name, price, size:str):
+           super().__init__(name, price)
+           self.size = size
    
+   class Appetizer(MenuItem):
+       def __init__(self, name, price, is_vegetarian:bool):
+           super().__init__(name, price)
+           self.is_vegetarian = is_vegetarian
+   
+   class MainCourse(MenuItem):
+       def __init__(self, name, price, cuisine_type:str):
+           super().__init__(name, price)
+           self.cuisine_type = cuisine_type
+   
+   class Dessert(MenuItem):
+       def __init__(self, name, price, is_sweet:bool):
+           super.__init__(self, name, price)
+           self.name = name
+           self.price = price
+           self.is_sweet = is_sweet
+   
+   class Order:
+       def __init__(self, order: list = []):
+           self.order = order
+       def add_to_order(self, new_item: MenuItem, quantity: int):
+           for i in range(quantity):
+               self.order.append(new_item)
+           return self.order
+       def total_bill(self):
+           bill = 0
+           for item in range(len(self.order)):
+               bill += self.order[item].get_price()
+           return bill
+       def print_order(self):
+           for i in range(len(self.order)):
+               print(self.order[i].get_name())
    ```
-
-   
+   The restaurant offers Items on their Menu. Once you Order, you can get your bill and a list of the Items buyed.
